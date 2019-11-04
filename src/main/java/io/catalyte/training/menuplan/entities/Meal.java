@@ -1,6 +1,5 @@
 package io.catalyte.training.menuplan.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -8,21 +7,15 @@ import javax.persistence.Table;
 @Table(name = "meal")
 public class Meal extends BaseEntity {
 
-  @Column(name = "mealName")
-  private String mealName;
-
   protected Meal() {
   }
 
-  public Meal(String mealName) {
-    this.mealName = mealName;
+  public Meal(String name) {
+    this.setName(name);
   }
 
   @Override
   public String toString() {
-    return String.format("Meal[id=%d, mealName='%s']", this.getId(), mealName);
-  }
-  public String getMealName() {
-    return mealName;
+    return String.format("Meal[id=%d, name='%s']", this.getId(), this.getName());
   }
 }

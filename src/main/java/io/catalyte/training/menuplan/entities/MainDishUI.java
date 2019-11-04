@@ -1,23 +1,28 @@
 package io.catalyte.training.menuplan.entities;
 
-public class MealUI {
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+public class MainDishUI {
 
   private String name;
-  protected MealUI() {
+  protected MainDishUI() {
   }
 
-  public MealUI(String name) {
+  public MainDishUI(String name) {
     this.name = name;
   }
 
   public String getName() {
     return name;
   }
+
   public void setName(String name) {
     this.name = name;
   }
 
+  @Override
   public String toString() {
-    return String.format("Meal[name='%s']", name);
+    return String.format("MainDish[name='%s']", name);
   }
 }
