@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@RequestMapping("/mealplans")
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 public class MealController {
@@ -29,40 +30,40 @@ public class MealController {
 
   @GetMapping("/bulkcreate")
   public String bulkcreate(){
-    mainDishRepository.saveAll(Arrays.asList(new MainDish("Chili con Carne")
+    List<MainDish> mainDishes = mainDishRepository.saveAll(Arrays.asList(new MainDish("Chili con Carne")
         , new MainDish("Baked Chicken")
         , new MainDish("Baked Fish")
         , new MainDish("Breaded Pork Chops")));
     //save a single meal
-    mealRepository.save(new Meal("Chili con Carne"));
+    mainDishes.add(mainDishRepository.save(new MainDish("Chili con Carne")));
     //save multiple meals
-    mealRepository.saveAll(Arrays.asList(new Meal("Chicken and Rice")
-    , new Meal("Fish Soup")
-    , new Meal("Pork Chops")));
+    mealRepository.saveAll(Arrays.asList(new Meal("Baked Chicken and Wild Rice", mainDishes.get(1).getId())
+    , new Meal("Baked Fish and Mixed Vegetables", mainDishes.get(2).getId())
+    , new Meal("Breaded Pork Chops and Carrots", mainDishes.get(3).getId())));
     return "Meals are bulk created";
   }
 
-  @PostMapping("/create")
+  @PostMapping
   public String create(@RequestBody MealUI meal){
     //save a single meal
-    mealRepository.save(new Meal(meal.getName()));
+    mealRepository.save(new Meal(meal.getName(), meal.getMainDishId()));
 
     return "Meal is created";
   }
 
-  @GetMapping("/findall")
+  @GetMapping
   public List<MealUI> findAll(){
     List<Meal> meals = mealRepository.findAll();
     List<MealUI> mealUI = new ArrayList<>();
 
     for (Meal meal : meals) {
-      mealUI.add(new MealUI(meal.getName()));
+      mealUI.add(new MealUI(meal.getName(), meal.getMainDishId()));
     }
 
     return mealUI;
   }
 
-  @RequestMapping("/search/{id}")
+  @RequestMapping("/{id}")
   public String search(@PathVariable long id){
     Optional<Meal> meal = mealRepository.findById(id);
     if (meal.isPresent()) {
@@ -78,7 +79,7 @@ public class MealController {
     List<MealUI> mealUI = new ArrayList<>();
 
     for (Meal meal : meals) {
-      mealUI.add(new MealUI(meal.getName()));
+      mealUI.add(new MealUI(meal.getName(), meal.getMainDishId()));
     }
     return mealUI;
   }

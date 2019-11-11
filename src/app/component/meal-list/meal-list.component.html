@@ -1,6 +1,6 @@
 <p>meal-list works!</p>
 <ul>
-  <li *ngFor="let meal of meals">
-    {{meal.name}}
+  <li *ngFor="let meal of this.mealService.meals">
+    {{meal.name}} - {{meal.mainDishId}}
   </li>
 </ul>

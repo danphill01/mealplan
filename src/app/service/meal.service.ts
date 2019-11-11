@@ -13,8 +13,11 @@ export interface Meal {
 })
 export class MealService {
   static readonly url: string = `${environment.apiUrl}/findall`;
+  meals: Meal[] = [];
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { 
+    this.getMeals().subscribe(meals => this.meals = meals);
+  }
 
   getMeals(): Observable<[Meal]> {
     return this.httpClient.get(MealService.url) as Observable<[Meal]>;

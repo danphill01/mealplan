@@ -7,14 +7,11 @@ import { MealService, Meal } from 'src/app/service/meal.service';
   styleUrls: ['./meal-list.component.css']
 })
 export class MealListComponent implements OnInit {
-  meals: Meal[] = [];
 
   constructor(
     private mealService: MealService
   ) { }
 
-  ngOnInit() {
-    this.mealService.getMeals().subscribe(meals => this.meals = meals);
-  }
+  ngOnInit() { }
 
 }

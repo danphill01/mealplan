@@ -4,7 +4,6 @@ import io.catalyte.training.menuplan.entities.MainDish;
 import io.catalyte.training.menuplan.entities.MainDishUI;
 import io.catalyte.training.menuplan.repository.MainDishRepository;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
