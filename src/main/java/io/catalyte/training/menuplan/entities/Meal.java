@@ -1,29 +1,27 @@
 package io.catalyte.training.menuplan.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.ManyToOne;
 
 @Entity
-@Table(name = "meal")
 public class Meal extends BaseEntity {
-  @Column(name = "main_dish_id")
-  private long mainDishId;
+  @ManyToOne()
+  private MainDish mainDish;
 
   protected Meal() {
   }
 
-  public Meal(String name, long mainDishId) {
+  public Meal(String name, MainDish mainDish) {
     this.setName(name);
-    this.setMainDishId(mainDishId);
+    this.mainDish = mainDish;
   }
 
-  public long getMainDishId() {
-    return mainDishId;
+  public MainDish getMainDish() {
+    return mainDish;
   }
 
-  public void setMainDishId(long mainDishId) {
-    this.mainDishId = mainDishId;
+  public void setMainDish(MainDish mainDish) {
+    this.mainDish = mainDish;
   }
 
   @Override

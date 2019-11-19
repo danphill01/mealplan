@@ -1,0 +1,12 @@
+version: '3'
+services:
+  db:
+    image: 'postgres:10.10'
+    container_name: 'mealplan_postgres'
+    ports:
+      - '5432:5432'
+    restart: always
+    volumes:
+      - database_data:/var/lib/postgresql/data
+volumes:
+  database_data:

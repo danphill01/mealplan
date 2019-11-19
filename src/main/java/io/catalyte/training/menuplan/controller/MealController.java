@@ -24,9 +24,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MealController {
   @Autowired
-  MealRepository mealRepository;
+  private MealRepository mealRepository;
   @Autowired
-  MainDishRepository mainDishRepository;
+  private MainDishRepository mainDishRepository;
 
   @GetMapping("/bulkcreate")
   public String bulkcreate(){
@@ -34,20 +34,22 @@ public class MealController {
         , new MainDish("Baked Chicken")
         , new MainDish("Baked Fish")
         , new MainDish("Breaded Pork Chops")));
-    //save a single meal
-    mainDishes.add(mainDishRepository.save(new MainDish("Chili con Carne")));
     //save multiple meals
-    mealRepository.saveAll(Arrays.asList(new Meal("Baked Chicken and Wild Rice", mainDishes.get(1).getId())
-    , new Meal("Baked Fish and Mixed Vegetables", mainDishes.get(2).getId())
-    , new Meal("Breaded Pork Chops and Carrots", mainDishes.get(3).getId())));
+    mealRepository.saveAll(Arrays.asList(new Meal("Chili con Carne and Corn Bread", mainDishes.get(0))
+    , new Meal("Baked Chicken and Wild Rice", mainDishes.get(1))
+    , new Meal("Baked Fish and Mixed Vegetables", mainDishes.get(2))
+    , new Meal("Breaded Pork Chops and Carrots", mainDishes.get(3))));
     return "Meals are bulk created";
   }
 
   @PostMapping
   public String create(@RequestBody MealUI meal){
-    //save a single meal
-    mealRepository.save(new Meal(meal.getName(), meal.getMainDishId()));
-
+    Optional<MainDish> mainDish = mainDishRepository.findById(meal.getMainDishId());
+    if (mainDish.isPresent()) {
+      mealRepository.save(new Meal(meal.getName(), mainDish.get()));
+    } else {
+      throw new EntityNotFoundException("MainDish", meal.getMainDishId());
+    }
     return "Meal is created";
   }
 
@@ -57,7 +59,7 @@ public class MealController {
     List<MealUI> mealUI = new ArrayList<>();
 
     for (Meal meal : meals) {
-      mealUI.add(new MealUI(meal.getName(), meal.getMainDishId()));
+      mealUI.add(new MealUI(meal.getName(), meal.getMainDish().getId()));
     }
 
     return mealUI;
@@ -79,7 +81,7 @@ public class MealController {
     List<MealUI> mealUI = new ArrayList<>();
 
     for (Meal meal : meals) {
-      mealUI.add(new MealUI(meal.getName(), meal.getMainDishId()));
+      mealUI.add(new MealUI(meal.getName(), meal.getMainDish().getId()));
     }
     return mealUI;
   }

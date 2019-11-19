@@ -1,5 +1,40 @@
 # Menuplan
 
+## Background
+This project is a combination of two ideas from the weekly project club. Since much of the needed software infrastructure would be common to both, the common code is provided here.
+
+### Idea 1
+
+Tanya is the manager of her school system’s cafeterias.  Every month she needs to come up with school lunches for the next month.  The school lunches should have a variety of different mains, sides, and desserts.
+
+Write Tanya a program that will put together her lunches for her.  
+Come up with a list of mains, sides, and desserts
+Be able to generate a list of meals.
+The meals should be unique.
+
+If you want to take it to the next level, calculate the calories and other nutritional values for the meals and generate balanced meals.
+
+### Idea 2
+
+Parker works a day job and when he comes home in the evening he likes to cook for himself.  The only problem is, he never has ingredients on hand.  He needs something to help him plan out his meals for the week
+
+Make Parker a shopping list generator.  Parker would like to be able to:
+Enter the names of recipes
+Enter the ingredients of a recipe
+Be able to pick from a list of recipes what meals to have this week
+Print out a shopping list with all the ingredients he needs.
+
+If you want to go the extra mile:
+Keep track of what he has on hand.
+Keep track of sides and suggest meals + sides that fit with the shopping list
+Integrate with an internet grocery ordering service and place the order automatically.
+
+## Setup Instructions
+
+### Prerequisites
+
+Postgres - Run from a docker container using compose or from a server on port 5432 with a database named "menuplan" created.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.6.
 
 ## Development server

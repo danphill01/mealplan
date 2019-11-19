@@ -1,8 +1,8 @@
 package io.catalyte.training.menuplan.controller;
 
-import io.catalyte.training.menuplan.entities.MainDish;
-import io.catalyte.training.menuplan.entities.MainDishUI;
-import io.catalyte.training.menuplan.repository.MainDishRepository;
+import io.catalyte.training.menuplan.entities.Dessert;
+import io.catalyte.training.menuplan.entities.DessertUI;
+import io.catalyte.training.menuplan.repository.DessertRepository;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,29 +15,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("/maindishes")
+@RequestMapping("/desserts")
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
-public class MainDishController {
+public class DessertController {
   @Autowired
   private
-  MainDishRepository mainDishRepository;
+  DessertRepository dessertRepository;
 
   @GetMapping
-  public List<MainDishUI> findAll() {
-    List<MainDish> mainDishes = mainDishRepository.findAll();
-    List<MainDishUI> mainDishUI = new ArrayList<>();
+  public List<DessertUI> findAll() {
+    List<Dessert> desserts = dessertRepository.findAll();
+    List<DessertUI> dessertUI = new ArrayList<>();
 
-    for (MainDish mainDish : mainDishes) {
-      mainDishUI.add(new MainDishUI(mainDish.getName()));
+    for (Dessert dessert : desserts) {
+      dessertUI.add(new DessertUI(dessert.getName()));
     }
-    return mainDishUI;
+    return dessertUI;
   }
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  public MainDish create(@RequestBody MainDishUI newMainDish) {
-    return mainDishRepository.save(new MainDish(newMainDish.getName()));
+  public Dessert create(@RequestBody DessertUI newDessert) {
+    return dessertRepository.save(new Dessert(newDessert.getName()));
   }
 
 }
