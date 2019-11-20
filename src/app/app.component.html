@@ -1,4 +1,9 @@
-<app-meal-list></app-meal-list>
-<app-main-dish-list></app-main-dish-list>
-<app-dessert-list></app-dessert-list>
-<app-dessert-form></app-dessert-form>
+<div class="container">
+  <h1>{{title}}</h1>
+  <nav>
+    <a routerLink="/meals">Meals</a>
+    <a routerLink="/main-dishes">Main Dishes</a>
+    <a routerLink="/desserts">Desserts</a>
+  </nav>
+  <router-outlet></router-outlet>
+</div>

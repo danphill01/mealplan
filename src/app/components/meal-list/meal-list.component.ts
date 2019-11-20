@@ -9,9 +9,10 @@ import { MealService } from 'src/app/services/meal.service';
 export class MealListComponent implements OnInit {
 
   constructor(
-    private mealService: MealService
+    private mealService: MealService,
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
 }

@@ -9,6 +9,8 @@ import { MainDishListComponent } from './components/main-dish-list/main-dish-lis
 import { MainDishFormComponent } from './components/main-dish-form/main-dish-form.component';
 import { DessertListComponent } from './components/dessert-list/dessert-list.component';
 import { DessertFormComponent } from './components/dessert-form/dessert-form.component';
+import { AppRoutingModule } from './app-routing.module';
+import { MealFormComponent } from './components/meal-form/meal-form.component';
 
 @NgModule({
   declarations: [
@@ -17,9 +19,11 @@ import { DessertFormComponent } from './components/dessert-form/dessert-form.com
     MainDishListComponent,
     MainDishFormComponent,
     DessertListComponent,
-    DessertFormComponent
+    DessertFormComponent,
+    MealFormComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     FormsModule,
     HttpClientModule

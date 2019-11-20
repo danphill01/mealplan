@@ -7,13 +7,16 @@ import javax.persistence.ManyToOne;
 public class Meal extends BaseEntity {
   @ManyToOne()
   private MainDish mainDish;
+  @ManyToOne()
+  private Dessert dessert;
 
   protected Meal() {
   }
 
-  public Meal(String name, MainDish mainDish) {
+  public Meal(String name, MainDish mainDish, Dessert dessert) {
     this.setName(name);
     this.mainDish = mainDish;
+    this.dessert = dessert;
   }
 
   public MainDish getMainDish() {
@@ -23,6 +26,18 @@ public class Meal extends BaseEntity {
   public void setMainDish(MainDish mainDish) {
     this.mainDish = mainDish;
   }
+
+  public String getMainDishName() { return mainDish.getName(); }
+
+  public Dessert getDessert() {
+    return dessert;
+  }
+
+  public void setDessert(Dessert dessert) {
+    this.dessert = dessert;
+  }
+
+  public String getDessertName() { return dessert.getName(); }
 
   @Override
   public String toString() {

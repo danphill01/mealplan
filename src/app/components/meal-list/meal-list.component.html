@@ -1,6 +1,7 @@
 <h1>Menu List</h1>
 <ul>
   <li *ngFor="let meal of this.mealService.meals">
-    {{meal.name}} - {{meal.mainDishId}}
+    {{meal.name}} - main dish: {{meal.mainDishName}}  dessert: {{meal.dessertName}}
   </li>
 </ul>
+<app-meal-form></app-meal-form>

@@ -2,14 +2,16 @@ package io.catalyte.training.menuplan.entities;
 
 public class MealUI {
   private String name;
-  private long mainDishId;
+  private String mainDishName;
+  private String dessertName;
 
   protected MealUI() {
   }
 
-  public MealUI(String name, long mainDishId) {
+  public MealUI(String name, String mainDishName, String dessertName) {
     this.name = name;
-    this.mainDishId = mainDishId;
+    this.mainDishName = mainDishName;
+    this.dessertName = dessertName;
   }
 
   public String getName() {
@@ -19,12 +21,19 @@ public class MealUI {
     this.name = name;
   }
 
-  public long getMainDishId() {
-    return mainDishId;
+  public String getMainDishName() {
+    return mainDishName;
+  }
+  public void setMainDishName(String mainDishName) {
+    this.mainDishName = mainDishName;
   }
 
-  public void setMainDishId(long mainDishId) {
-    this.mainDishId = mainDishId;
+  public String getDessertName() {
+    return dessertName;
+  }
+
+  public void setDessertName(String dessertName) {
+    this.dessertName = dessertName;
   }
 
   public String toString() {

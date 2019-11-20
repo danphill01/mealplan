@@ -2,10 +2,12 @@ package io.catalyte.training.menuplan.controller;
 
 import io.catalyte.training.menuplan.entities.MainDish;
 import io.catalyte.training.menuplan.entities.MainDishUI;
+import io.catalyte.training.menuplan.exception.ConflictException;
 import io.catalyte.training.menuplan.repository.MainDishRepository;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,9 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 public class MainDishController {
-  @Autowired
-  private
-  MainDishRepository mainDishRepository;
+  @Autowired private MainDishRepository mainDishRepository;
 
   @GetMapping
   public List<MainDishUI> findAll() {
@@ -37,7 +37,10 @@ public class MainDishController {
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
   public MainDish create(@RequestBody MainDishUI newMainDish) {
-    return mainDishRepository.save(new MainDish(newMainDish.getName()));
+    try {
+      return mainDishRepository.save(new MainDish(newMainDish.getName()));
+    } catch (DataIntegrityViolationException dive) {
+      throw new ConflictException(dive, "Main Dish", newMainDish.getName());
+    }
   }
-
 }

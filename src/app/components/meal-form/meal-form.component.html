@@ -1,0 +1,32 @@
+<h2>Add A New Meal</h2>
+<form (ngSubmit)="onSubmit(); mealForm.reset()" #mealForm="ngForm">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name" #name2="ngModel">
+    <div [hidden]="name2.valid || name2.pristine" class="alert alert-danger">
+      Name is required
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="main-dish">Main Dish</label>
+    <select class="form-control" id="main-dish" required [(ngModel)]="model.mainDishName" name="mainDishName" #mainDishName="ngModel">
+      <option value=''>Select a main dish</option>
+      <option *ngFor="let main of this.mainDishService.getMainDishOptions()" [value]="main.name">{{main.name}}</option>
+    </select>
+    <div [hidden]="mainDishName.valid || mainDishName.pristine" class="alert alert-danger">
+      Main Dish Name is required
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="dessert">Dessert</label>
+    <select class="form-control" id="dessert" required [(ngModel)]="model.dessertName" name="dessertName" #dessertName="ngModel">
+      <option value="">Select a dessert</option>
+      <option *ngFor="let dessert of this.dessertService.getDessertOptions()" [value]="dessert.name">{{dessert.name}}</option>
+    </select>
+    <div [hidden]="dessertName.valid || dessertName.pristine" class="alert alert-danger">
+      Dessert Name is required
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!mealForm.form.valid">Submit</button>
+</form>

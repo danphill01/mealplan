@@ -2,7 +2,8 @@ export class Meal {
 
   constructor(
     public name: string,
-    public mainDishId: number
+    public mainDishName: string,
+    public dessertName: string,
   ) { }
 
 }

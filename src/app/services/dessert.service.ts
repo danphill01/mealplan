@@ -5,6 +5,10 @@ import { tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { Dessert } from '../models/dessert';
 
+export interface DessertOption {
+  name: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -26,4 +30,7 @@ export class DessertService {
     );
   }
 
+  getDessertOptions(): DessertOption[] {
+    return this.desserts.map(dessert => ({ name: dessert.name }));
+  }
 }

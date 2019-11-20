@@ -1,6 +1,7 @@
-<h1>Dessert List</h1>
+<h2>Dessert List</h2>
 <ul>
   <li *ngFor="let dessert of this.dessertService.desserts">
     {{dessert.name}}
   </li>
 </ul>
+<app-dessert-form></app-dessert-form>
