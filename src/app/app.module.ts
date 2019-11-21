@@ -11,6 +11,8 @@ import { DessertListComponent } from './components/dessert-list/dessert-list.com
 import { DessertFormComponent } from './components/dessert-form/dessert-form.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MealFormComponent } from './components/meal-form/meal-form.component';
+import { SideDishListComponent } from './components/side-dish-list/side-dish-list.component';
+import { EntityListComponent } from './components/entity-list/entity-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { MealFormComponent } from './components/meal-form/meal-form.component';
     MainDishFormComponent,
     DessertListComponent,
     DessertFormComponent,
-    MealFormComponent
+    MealFormComponent,
+    SideDishListComponent,
+    EntityListComponent
   ],
   imports: [
     AppRoutingModule,

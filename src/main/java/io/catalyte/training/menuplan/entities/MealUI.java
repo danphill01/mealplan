@@ -3,14 +3,16 @@ package io.catalyte.training.menuplan.entities;
 public class MealUI {
   private String name;
   private String mainDishName;
+  private String sideDishName;
   private String dessertName;
 
   protected MealUI() {
   }
 
-  public MealUI(String name, String mainDishName, String dessertName) {
+  public MealUI(String name, String mainDishName, String sideDishName, String dessertName) {
     this.name = name;
     this.mainDishName = mainDishName;
+    this.sideDishName = sideDishName;
     this.dessertName = dessertName;
   }
 
@@ -28,6 +30,14 @@ public class MealUI {
     this.mainDishName = mainDishName;
   }
 
+  public String getSideDishName() {
+    return sideDishName;
+  }
+
+  public void setSideDishName(String sideDishName) {
+    this.sideDishName = sideDishName;
+  }
+
   public String getDessertName() {
     return dessertName;
   }
@@ -36,7 +46,13 @@ public class MealUI {
     this.dessertName = dessertName;
   }
 
+  @Override
   public String toString() {
-    return String.format("Meal[name='%s']", name);
+    return "MealUI{" +
+      "name='" + name + '\'' +
+      ", mainDishName='" + mainDishName + '\'' +
+      ", sideDishName='" + sideDishName + '\'' +
+      ", dessertName='" + dessertName + '\'' +
+      '}';
   }
 }

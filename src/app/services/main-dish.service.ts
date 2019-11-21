@@ -14,28 +14,24 @@ export interface MainDishOption {
 })
 export class MainDishService {
   static readonly url: string = `${environment.apiUrl}/maindishes`;
-  mainDishes: MainDish[] = [];
+  mainDishList: MainDish[] = [];
 
   constructor(private httpClient: HttpClient) {
-    this.getMainDishes().subscribe(mainDishes => this.mainDishes = mainDishes);
+    this.getMainDishes().subscribe(mainDishes => this.mainDishList = mainDishes);
   }
 
   getMainDishes(): Observable<[MainDish]> {
-    return this.httpClient.get(MainDishService.url).pipe(
-      tap((mainList: [MainDish]) => {
-        this.mainDishes = mainList;
-      })
-    );
+    return this.httpClient.get(MainDishService.url) as Observable<[MainDish]>;
   }
 
   addMainDish(newMainDish: MainDish): Observable<MainDish> {
     return this.httpClient.post(MainDishService.url, newMainDish).pipe(
-      tap((createdMainDish: MainDish) => this.mainDishes.push(createdMainDish))
+      tap((createdMainDish: MainDish) => this.mainDishList.push(createdMainDish))
     );
   }
 
   getMainDishOptions(): MainDishOption[] {
-    return this.mainDishes.map(mainDish => ({ name: mainDish.name }));
+    return this.mainDishList.map(mainDish => ({ name: mainDish.name }));
   }
 
 }

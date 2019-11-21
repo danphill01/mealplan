@@ -5,18 +5,23 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "main")
-public class MainDish {
+public class SideDish {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
+
   @Column(unique = true)
   private String name;
 
-  private long getId() {
+  public SideDish() {}
+
+  public SideDish(String name) {
+    this.name = name;
+  }
+
+  public long getId() {
     return id;
   }
 
@@ -32,15 +37,8 @@ public class MainDish {
     this.name = name;
   }
 
-  protected MainDish() {
-  }
-
-  public MainDish(String name) {
-    this.name = name;
-  }
-
   @Override
   public String toString() {
-    return String.format("MainDish Dish[id=%d, name='%s']", this.getId(), this.getName());
+    return String.format("SideDish[name='%s']", name);
   }
 }

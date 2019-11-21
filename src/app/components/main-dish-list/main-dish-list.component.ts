@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MainDishService } from 'src/app/services/main-dish.service';
 
 @Component({
   selector: 'app-main-dish-list',
-  templateUrl: './main-dish-list.component.html',
-  styleUrls: ['./main-dish-list.component.css']
+  template: `
+    <app-entity-list
+      pageHeader="Main Dish List"
+      [entityList]="this.service.mainDishList">
+    </app-entity-list>
+    <app-main-dish-form></app-main-dish-form>
+  `,
 })
-export class MainDishListComponent implements OnInit {
+export class MainDishListComponent {
 
-  constructor(private mainDishService: MainDishService) { }
-
-  ngOnInit() {
-  }
+  constructor(private service: MainDishService) { }
 
 }
