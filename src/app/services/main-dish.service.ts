@@ -33,5 +33,4 @@ export class MainDishService {
   getMainDishOptions(): MainDishOption[] {
     return this.mainDishList.map(mainDish => ({ name: mainDish.name }));
   }
-
 }

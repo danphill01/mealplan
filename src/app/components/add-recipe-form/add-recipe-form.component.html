@@ -1,5 +1,5 @@
-<h2>Add A New Main Dish</h2>
-<form (ngSubmit)="onSubmit(); mainDishForm.reset()" #mainDishForm="ngForm">
+<h2>Add A Recipe</h2>
+<form (ngSubmit)="onSubmit(); addRecipeForm.reset()" #addRecipeForm="ngForm">
   <div class="form-group">
     <label for="name">Name</label>
     <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name" #name="ngModel">
@@ -8,5 +8,5 @@
     </div>
   </div>
 
-  <button type="submit" class="btn btn-primary" [disabled]="!mainDishForm.form.valid">Submit</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!addRecipeForm.form.valid">Submit</button>
 </form>

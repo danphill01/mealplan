@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainDishListComponent } from './main-dish-list.component';
+import { SideDishPageComponent } from './side-dish-page.component';
 
-describe('MainDishListComponent', () => {
-  let component: MainDishListComponent;
-  let fixture: ComponentFixture<MainDishListComponent>;
+describe('SideDishComponent', () => {
+  let component: SideDishPageComponent;
+  let fixture: ComponentFixture<SideDishPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainDishListComponent ]
+      declarations: [ SideDishPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainDishListComponent);
+    fixture = TestBed.createComponent(SideDishPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Recipe } from 'src/app/models/recipe';
 
 @Component({
   selector: 'app-entity-list',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class EntityListComponent implements OnInit {
   @Input() pageHeader: string;
-  @Input() entityList: any[];
+  @Input() entityList: Recipe[];
 
   constructor() { }
 

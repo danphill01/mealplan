@@ -1,7 +1,12 @@
-<h1>Menu List</h1>
-<ul>
-  <li *ngFor="let meal of this.mealService.meals">
-    {{meal.name}} - main dish: {{meal.mainDishName}}  dessert: {{meal.dessertName}}
-  </li>
-</ul>
+<h2>Menu Cards</h2>
+  <div class="card-group">
+    <div class="card border m-1" *ngFor="let meal of this.mealService.meals">
+      <div class="card-header">{{meal.name}}</div>
+      <ul class="list-group">
+        <li class="list-group-item">Main:  {{meal.mainDishName}}</li>
+        <li class="list-group-item">Side:  {{meal.sideDishName}}</li>
+        <li class="list-group-item">Dessert:  {{meal.dessertName}}</li>
+      </ul>
+    </div>    
+  </div>
 <app-meal-form></app-meal-form>

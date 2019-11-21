@@ -18,6 +18,16 @@
     </div>
   </div>
   <div class="form-group">
+    <label for="side-dish">Side Dish</label>
+    <select class="form-control" id="side-dish" required [(ngModel)]="model.sideDishName" name="sideDishName" #sideDishName="ngModel">
+      <option value=''>Select a side dish</option>
+      <option *ngFor="let side of this.sideDishService.getSideDishOptions()" [value]="side.name">{{side.name}}</option>
+    </select>
+    <div [hidden]="sideDishName.valid || sideDishName.pristine" class="alert alert-danger">
+      Side Dish Name is required
+    </div>
+  </div>
+  <div class="form-group">
     <label for="dessert">Dessert</label>
     <select class="form-control" id="dessert" required [(ngModel)]="model.dessertName" name="dessertName" #dessertName="ngModel">
       <option value="">Select a dessert</option>
