@@ -1,10 +1,17 @@
 package io.catalyte.training.menuplan.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Meal extends BaseEntity {
+public class Meal {
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO) private long id;
+  @Column(name = "name") private String name;
   @ManyToOne() private MainDish mainDish;
   @ManyToOne() private SideDish sideDish;
   @ManyToOne() private Dessert dessert;
@@ -12,10 +19,26 @@ public class Meal extends BaseEntity {
   protected Meal() {}
 
   public Meal(String name, MainDish mainDish, SideDish sideDish, Dessert dessert) {
-    this.setName(name);
+    this.name = name;
     this.mainDish = mainDish;
     this.sideDish = sideDish;
     this.dessert = dessert;
+  }
+
+  public long getId() {
+    return id;
+  }
+
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public MainDish getMainDish() {

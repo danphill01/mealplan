@@ -1,9 +1,10 @@
-package io.catalyte.training.menuplan.controller;
+package io.catalyte.training.menuplan.controllers;
 
 import io.catalyte.training.menuplan.entities.MainDish;
 import io.catalyte.training.menuplan.entities.MainDishUI;
-import io.catalyte.training.menuplan.exception.ConflictException;
-import io.catalyte.training.menuplan.repository.MainDishRepository;
+import io.catalyte.training.menuplan.exceptions.ConflictException;
+import io.catalyte.training.menuplan.repositories.MainDishRepository;
+import io.catalyte.training.menuplan.services.MainDishService;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MainDishController {
   @Autowired private MainDishRepository mainDishRepository;
+  @Autowired private MainDishService mainDishService;
 
   @GetMapping
   public List<MainDishUI> findAll() {
@@ -32,6 +34,11 @@ public class MainDishController {
       mainDishUI.add(new MainDishUI(mainDish.getName()));
     }
     return mainDishUI;
+  }
+
+  @GetMapping("/random")
+  public MainDishUI pickRandomMainDishes() {
+    return mainDishService.pickRandom();
   }
 
   @PostMapping

@@ -1,9 +1,10 @@
-package io.catalyte.training.menuplan.controller;
+package io.catalyte.training.menuplan.controllers;
 
 import io.catalyte.training.menuplan.entities.SideDish;
 import io.catalyte.training.menuplan.entities.SideDishUI;
-import io.catalyte.training.menuplan.exception.ConflictException;
-import io.catalyte.training.menuplan.repository.SideDishRepository;
+import io.catalyte.training.menuplan.exceptions.ConflictException;
+import io.catalyte.training.menuplan.repositories.SideDishRepository;
+import io.catalyte.training.menuplan.services.SideDishService;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +22,12 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 public class SideDishController {
-  @Autowired private SideDishRepository sideDishRepository;
+  @Autowired private SideDishRepository repository;
+  @Autowired private SideDishService service;
 
   @GetMapping
   public List<SideDishUI> findAll() {
-    List<SideDish> sideDishes = sideDishRepository.findAll();
+    List<SideDish> sideDishes = repository.findAll();
     List<SideDishUI> sideDishUI = new ArrayList<>();
 
     for (SideDish sideDish : sideDishes) {
@@ -34,11 +36,16 @@ public class SideDishController {
     return sideDishUI;
   }
 
+  @GetMapping("/random")
+  public SideDishUI pickRandomMainDishes() {
+    return service.pickRandom();
+  }
+
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
   public SideDish create(@RequestBody SideDishUI newSideDish) {
     try {
-      return sideDishRepository.save(new SideDish(newSideDish.getName()));
+      return repository.save(new SideDish(newSideDish.getName()));
     } catch (DataIntegrityViolationException dive) {
       throw new ConflictException(dive, "Main Dish", newSideDish.getName());
     }

@@ -1,8 +1,8 @@
-package io.catalyte.training.menuplan.controller;
+package io.catalyte.training.menuplan.controllers;
 
 import io.catalyte.training.menuplan.entities.Dessert;
 import io.catalyte.training.menuplan.entities.DessertUI;
-import io.catalyte.training.menuplan.repository.DessertRepository;
+import io.catalyte.training.menuplan.repositories.DessertRepository;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,6 @@
-package io.catalyte.training.menuplan.repository;
+package io.catalyte.training.menuplan.repositories;
 
 import io.catalyte.training.menuplan.entities.Dessert;
-import io.catalyte.training.menuplan.entities.MainDish;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 

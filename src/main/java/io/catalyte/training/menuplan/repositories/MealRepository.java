@@ -1,4 +1,4 @@
-package io.catalyte.training.menuplan.repository;
+package io.catalyte.training.menuplan.repositories;
 
 import io.catalyte.training.menuplan.entities.Meal;
 import java.util.List;
