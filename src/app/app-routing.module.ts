@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'main-dishes', component: MainDishPageComponent },
   { path: 'side-dishes', component: SideDishPageComponent },
   { path: 'desserts', component: DessertListComponent },
-]
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

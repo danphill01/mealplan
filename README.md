@@ -34,6 +34,7 @@ Integrate with an internet grocery ordering service and place the order automati
 ### Prerequisites
 
 Postgres - Run from a docker container using compose or from a server on port 5432 with a database named "menuplan" created.
+Maven - Run backend server from an IDE such as IntelliJ by running the springboot plugin or from the command line. e.g. `mvn package && java -jar target\menuplan-0.0.1-SNAPSHOT.jar`
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.6.
 
