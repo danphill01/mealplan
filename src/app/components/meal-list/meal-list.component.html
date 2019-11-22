@@ -1,6 +1,6 @@
 <h2>Menu Cards</h2>
-  <div class="card-group">
-    <div class="card border m-1" *ngFor="let meal of this.mealService.meals">
+  <div class="card-columns">
+    <div class="card" *ngFor="let meal of this.mealService.meals">
       <div class="card-header">{{meal.name}}</div>
       <ul class="list-group">
         <li class="list-group-item">Main:  {{meal.mainDishName}}</li>
