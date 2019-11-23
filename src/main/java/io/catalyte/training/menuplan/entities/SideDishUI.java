@@ -1,13 +1,17 @@
 package io.catalyte.training.menuplan.entities;
 
+import java.util.Set;
+
 public class SideDishUI {
 
   private String name;
+  private Set<Component> components;
 
   protected SideDishUI() {}
 
-  public SideDishUI(String name) {
+  public SideDishUI(String name, Set<Component> components) {
     this.name = name;
+    this.components = components;
   }
 
   public String getName() {
@@ -18,8 +22,19 @@ public class SideDishUI {
     this.name = name;
   }
 
+  public Set<Component> getComponents() {
+    return components;
+  }
+
+  public void setComponents(Set<Component> components) {
+    this.components = components;
+  }
+
   @Override
   public String toString() {
-    return String.format("SideDish[name='%s']", name);
+    return "SideDishUI{" +
+      "name='" + name + '\'' +
+      ", components=" + components +
+      '}';
   }
 }

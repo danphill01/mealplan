@@ -31,7 +31,7 @@ public class MainDishController {
     List<MainDishUI> mainDishUI = new ArrayList<>();
 
     for (MainDish mainDish : mainDishes) {
-      mainDishUI.add(new MainDishUI(mainDish.getName()));
+      mainDishUI.add(new MainDishUI(mainDish.getName(), mainDish.getComponent()));
     }
     return mainDishUI;
   }
@@ -45,7 +45,7 @@ public class MainDishController {
   @ResponseStatus(HttpStatus.CREATED)
   public MainDish create(@RequestBody MainDishUI newMainDish) {
     try {
-      return mainDishRepository.save(new MainDish(newMainDish.getName()));
+      return mainDishRepository.save(new MainDish(newMainDish.getName(), newMainDish.getComponents()));
     } catch (DataIntegrityViolationException dive) {
       throw new ConflictException(dive, "Main Dish", newMainDish.getName());
     }

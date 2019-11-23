@@ -1,13 +1,17 @@
 package io.catalyte.training.menuplan.entities;
 
+import java.util.Set;
+
 public class DessertUI {
 
   private String name;
-  protected DessertUI() {
-  }
+  private Set<Component> components;
 
-  public DessertUI(String name) {
+  protected DessertUI() {}
+
+  public DessertUI(String name, Set<Component> components) {
     this.name = name;
+    this.components = components;
   }
 
   public String getName() {
@@ -18,8 +22,19 @@ public class DessertUI {
     this.name = name;
   }
 
+  public Set<Component> getComponents() {
+    return components;
+  }
+
+  public void setComponents(Set<Component> components) {
+    this.components = components;
+  }
+
   @Override
   public String toString() {
-    return String.format("Dessert[name='%s']", name);
+    return "DessertUI{" +
+      "name='" + name + '\'' +
+      ", components=" + components +
+      '}';
   }
 }

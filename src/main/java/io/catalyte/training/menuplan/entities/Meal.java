@@ -10,8 +10,12 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Meal {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO) private long id;
-  @Column(name = "name") private String name;
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private long id;
+
+  @Column(name = "name")
+  private String name;
+
   @ManyToOne() private MainDish mainDish;
   @ManyToOne() private SideDish sideDish;
   @ManyToOne() private Dessert dessert;
@@ -79,10 +83,13 @@ public class Meal {
 
   @Override
   public String toString() {
-    return "Meal{" +
-      "mainDish=" + mainDish +
-      ", sideDish=" + sideDish +
-      ", dessert=" + dessert +
-      '}';
+    return "Meal{"
+        + "mainDish="
+        + mainDish
+        + ", sideDish="
+        + sideDish
+        + ", dessert="
+        + dessert
+        + '}';
   }
 }

@@ -20,7 +20,7 @@ public class MainDishServiceImpl implements MainDishService {
     MainDish randomMainDish = null;
     if (mainDishPage.hasContent()) {
       randomMainDish = mainDishPage.getContent().get(0);
-      return new MainDishUI(randomMainDish.getName());
+      return new MainDishUI(randomMainDish.getName(), randomMainDish.getComponent());
     } else {
       throw new EntityNotFoundException("MainDish", idx);
     }

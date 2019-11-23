@@ -20,7 +20,7 @@ public class SideDishServiceImpl implements SideDishService {
     SideDish randomSideDish = null;
     if (sideDishPage.hasContent()) {
       randomSideDish = sideDishPage.getContent().get(0);
-      return new SideDishUI(randomSideDish.getName());
+      return new SideDishUI(randomSideDish.getName(), randomSideDish.getComponent());
     } else {
       throw new EntityNotFoundException("SideDish", idx);
     }

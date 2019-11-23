@@ -29,7 +29,7 @@ public class DessertController {
     List<DessertUI> dessertUI = new ArrayList<>();
 
     for (Dessert dessert : desserts) {
-      dessertUI.add(new DessertUI(dessert.getName()));
+      dessertUI.add(new DessertUI(dessert.getName(), dessert.getComponent()));
     }
     return dessertUI;
   }
@@ -37,7 +37,7 @@ public class DessertController {
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
   public Dessert create(@RequestBody DessertUI newDessert) {
-    return dessertRepository.save(new Dessert(newDessert.getName()));
+    return dessertRepository.save(new Dessert(newDessert.getName(), newDessert.getComponents()));
   }
 
 }

@@ -31,7 +31,7 @@ public class SideDishController {
     List<SideDishUI> sideDishUI = new ArrayList<>();
 
     for (SideDish sideDish : sideDishes) {
-      sideDishUI.add(new SideDishUI(sideDish.getName()));
+      sideDishUI.add(new SideDishUI(sideDish.getName(), sideDish.getComponent()));
     }
     return sideDishUI;
   }
@@ -45,7 +45,7 @@ public class SideDishController {
   @ResponseStatus(HttpStatus.CREATED)
   public SideDish create(@RequestBody SideDishUI newSideDish) {
     try {
-      return repository.save(new SideDish(newSideDish.getName()));
+      return repository.save(new SideDish(newSideDish.getName(), newSideDish.getComponents()));
     } catch (DataIntegrityViolationException dive) {
       throw new ConflictException(dive, "Main Dish", newSideDish.getName());
     }
