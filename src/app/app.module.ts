@@ -13,6 +13,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { MealFormComponent } from './components/meal-form/meal-form.component';
 import { SideDishPageComponent } from './components/side-dish-page/side-dish-page.component';
 import { EntityListComponent } from './components/entity-list/entity-list.component';
+import { httpInterceptorProviders } from './interceptors';
+import { SecurityService } from './services/security.service';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,8 @@ import { EntityListComponent } from './components/entity-list/entity-list.compon
     DessertFormComponent,
     MealFormComponent,
     SideDishPageComponent,
-    EntityListComponent
+    EntityListComponent,
+    LoginComponent
   ],
   imports: [
     AppRoutingModule,
@@ -32,7 +36,10 @@ import { EntityListComponent } from './components/entity-list/entity-list.compon
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    SecurityService,
+    httpInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

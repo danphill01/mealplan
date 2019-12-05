@@ -4,10 +4,12 @@ import { MealListComponent } from './components/meal-list/meal-list.component';
 import { MainDishPageComponent } from './components/main-dish-page/main-dish-page.component';
 import { DessertListComponent } from './components/dessert-list/dessert-list.component';
 import { SideDishPageComponent } from './components/side-dish-page/side-dish-page.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/meals', pathMatch: 'full' },
   { path: 'meals', component: MealListComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'main-dishes', component: MainDishPageComponent },
   { path: 'side-dishes', component: SideDishPageComponent },
   { path: 'desserts', component: DessertListComponent },
@@ -15,6 +17,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  declarations: []
 })
 export class AppRoutingModule { }

@@ -1,10 +1,16 @@
 <div class="container">
   <h1>{{title}}</h1>
   <nav>
-    <a routerLink="/meals">Meals</a>
-    <a routerLink="/main-dishes">Main Dishes</a>
-    <a routerLink="/side-dishes">Side Dishes</a>
-    <a routerLink="/desserts">Desserts</a>
+    <ul class="nav nav-pills">
+      <li><a routerLinkActive="active" routerLink="/meals">Home</a></li>
+      <li><a routerLink="/main-dishes">Main Dishes</a></li>
+      <li><a routerLink="/side-dishes">Side Dishes</a></li>
+      <li><a routerLink="/desserts">Desserts</a></li>
+      <li [hidden]="!authenticated()"><a routerLinkActive="active" routerLink="/login">Login</a></li>
+      <li [hidden]="authenticated()"><a (click)="logout()">Logout</a></li>  
+    </ul>
   </nav>
-  <router-outlet></router-outlet>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
 </div>
